@@ -72,8 +72,6 @@ $randomButton.addEventListener('click', function () {
   changeHp(player1);
   changeHp(player2);
 })  
-
-
 $arenas.appendChild(createPlayer(player1));
 $arenas.appendChild(createPlayer(player2));
 
