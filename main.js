@@ -60,7 +60,6 @@ function changeHP(randomHP) {
   }
 }
 
-
 function attack() {
   console.log(this.name + ' Fight...');
 }
@@ -74,7 +73,6 @@ function renderHP(){
 
 function getRandom(number){
   return Math.ceil(Math.random() * number)
-
 }
 function playerWin(name) {
   const $loseTitle = createElement('div', 'loseTitle')
@@ -97,8 +95,6 @@ function createReloadButton(){
   $arenas.appendChild($reloadWrap);
 }
 
-
-
 $randomButton.addEventListener('click', function () {
   console.log('randomButton');
 
@@ -120,7 +116,7 @@ $randomButton.addEventListener('click', function () {
    else if (player1.hp === 0 && player2.hp === 0) {
     $arenas.appendChild(playerWin())
   }
-}) 
+});
 
 $arenas.appendChild(createPlayer(player1));
 $arenas.appendChild(createPlayer(player2));
