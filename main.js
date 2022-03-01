@@ -159,8 +159,6 @@ $formFight.addEventListener('submit',function(event){
    else if (player1.hp === 0 && player2.hp === 0) {
     $arenas.appendChild(playerWin())
   }
-  
-
 })
 
 
