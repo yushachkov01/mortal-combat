@@ -1,17 +1,19 @@
-/**
- * 
- * @returns time
- */
-export function getTime() {
+export const getCurrentTime = () => {
   const time = new Date;
 
   return time.toLocaleTimeString();
-}
-/**
- * 
- * @param {} number 
- * @returns рандомное число
- */
-export function getRandom(number) {
+};
+
+export const getRandom = (number) => {
   return Math.ceil(Math.random() * number);
-}
+};
+
+export const createElement = (tag, className) => {
+  const $tag = document.createElement(tag);
+
+  if (className) {
+    $tag.classList.add(className);
+  }
+
+  return $tag;
+};
