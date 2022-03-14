@@ -1,30 +1,39 @@
-import { LOGS, $chat } from '../constants.js';
-import { getRandom, getTime } from './utils.js';
+import { LOGS, $chat } from '../constants/constants.js';
+import { getRandom, getCurrentTime } from './utils.js';
 /**
  * 
  * @param {*} type 
- * @param {*} player1 
- * @param {*} player2 
+ * @param {*} firstPlayer 
+ * @param {*} secondPlayer 
  * @param {*} damageCounter 
+ * время удара
  */
-export const generateLogs = (type, player1, player2, damageCounter) => {
+export const generateLogs = (type, firstPlayer, secondPlayer, damageCounter) => {
   let text;
 
   switch (type) {
     case 'start':
-      text = LOGS[type].replace('[time]', getTime()).replace('[player1]', player1.name).replace('[player2]', player2.name);
+      text = LOGS[type].replace('[time]', getCurrentTime())
+      .replace('[player1]', firstPlayer.name)
+      .replace('[player2]', secondPlayer.name);
       break;
 
     case 'end':
-      text = LOGS[type][getRandom(LOGS[type].length) - 1].replace('[playerWins]', player1.name).replace('[playerLose]', player2.name);
+      text = LOGS[type][getRandom(LOGS[type].length) - 1]
+      .replace('[playerWins]', firstPlayer.name)
+      .replace('[playerLose]', secondPlayer.name);
       break;
 
     case 'hit':
-      text = `${getTime()} - ${LOGS[type][getRandom(LOGS[type].length) - 1].replace('[playerKick]', player1.name).replace('[playerDefence]', player2.name)} -${damageCounter} [${player2.hp}/100]`;
+      text = `${getCurrentTime()} - ${LOGS[type][getRandom(LOGS[type].length) - 1]
+        .replace('[playerKick]', firstPlayer.name)
+        .replace('[playerDefence]', secondPlayer.name)} -${damageCounter} [${secondPlayer.hp}/100]`;
       break;
 
     case 'defence':
-      text = `${getTime()} - ${LOGS[type][getRandom(LOGS[type].length) - 1].replace('[playerKick]', player2.name).replace('[playerDefence]', player1.name)}`;
+      text = `${getCurrentTime()} - ${LOGS[type][getRandom(LOGS[type].length) - 1]
+        .replace('[playerKick]', secondPlayer.name)
+        .replace('[playerDefence]', firstPlayer.name)}`;
       break;
 
     case 'draw':
